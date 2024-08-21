@@ -11,16 +11,20 @@ describe("form", () => {
     });
     page = await browser.newPage();
   });
+  test('test', async () => {
+    await page.goto('http://localhost:9000');
+    await page.waitFor('body');
+  });
 
   test("button click add .active", async () => {
     jest.setTimeout(30000);
     await page.goto("http://localhost:8080");
-    await page.waitForSelector(".form-button");
+    await page.waitForSelector("button");
     const btn = await page.$(".form-button");
     await btn.click();
     const active = await page.$(".active");
     await page.waitForSelector(".active");
-    expect(active).toBeDefined();
+    expect(active).toBeDefined(); 
   });
   afterEach(async () => {
     await browser.close();
